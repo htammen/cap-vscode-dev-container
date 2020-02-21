@@ -101,6 +101,27 @@ Nothing easier than this. Just edit the `Dockerfile`  or `devcontainer.json` fil
 
 ![image-20200220224025455](images/rebuild-container.png)
 
+## Access the container from outside VS Code
+
+You want to access the container from outside VS Code in your Terminal window? That's also possible.
+
+- Open a Terminal window
+
+- Enter `docker ps` to get a list of your running containers (here is an example of my containers)
+
+  ```bash
+  CONTAINER ID        IMAGE                                                         COMMAND                  CREATED             STATUS              PORTS               NAMES
+  ba3f51d77b0c        vsc-sap-comm-content-42fbe9adaaec2f04dce05fdf6aa373d0         "/bin/sh -c 'echo Co…"   2 days ago          Up 2 days                               fervent_engelbart
+  50ffa09c6eb9        daprio/dapr                                                   "./placement"            3 days ago          Up 2 days                               dapr_placement_dapr-dev-container
+  50be5aa53387        redis                                                         "docker-entrypoint.s…"   3 days ago          Up 2 days           6379/tcp            dapr_redis_dapr-dev-container
+  ```
+
+- Copy the name of your container into clipboard (here I use: fervent_engelbart)
+
+- Enter the following command `docker exec -it fervent_engelbart /bin/bash` (replace ferment_engelbart by your container name)
+
+
+
 ## More information
 
 You got me, it's really amazing what's possible with this containers. Can I do more?
