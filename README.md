@@ -127,7 +127,17 @@ You want to access the container from outside VS Code in your Terminal window? T
 You got me, it's really amazing what's possible with this containers. Can I do more?
 Here you find more information about [Developing inside a Container](https://code.visualstudio.com/docs/remote/containers).
 
+## Troubleshooting
 
+On my new Linux (Ubuntu 18.04) host I could not run the dev container. During creation I got an error that the zip file vscode-cds-2.1.4.vsix is not correct. Don't know why this happens and if it's only a problem of my host environment. But if you encounter the same problem comment the following lines of the `Dockerfile` in the `.devcontainer` folder 
+```
+#    && curl -H "cookie: eula_3_1_agreed=tools.hana.ondemand.com/developer-license-3_1.txt" -o /tmp/cds.zip https://tools.hana.ondemand.com/additional/vscode-cds-updateSite/vscode-cds-1.4.0.vsix \
+#    && mkdir -p /tmp/cds \
+#    && unzip /tmp/cds.zip extension/*.* -d /tmp/cds \
+#    && mkdir -p /root/.vscode-server/extensions/sapse.vscode-cds-1.4.0 \
+#    && mv /tmp/cds/extension/* /root/.vscode-server/extensions/sapse.vscode-cds-1.4.0/ 
+```
+__and don't forget to remove the trailing `\` in the line before__
 
   
 
